@@ -75,25 +75,42 @@
         <!--Starting Location-->
         <scene sceneID="BHo-ZQ-d9W">
             <objects>
-                <viewController id="rMg-a7-5hY" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VgV-hc-BbZ">
+                <viewController id="rMg-a7-5hY" customClass="StartingLocationsVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XyB-lk-z6t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="cn0-TG-35t"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="fAK-Qz-lJR">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fAK-Qz-lJR" id="sGp-Bk-zqr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rMg-a7-5hY" id="yg5-EP-xVK"/>
+                            <outlet property="delegate" destination="rMg-a7-5hY" id="MvN-X3-WBc"/>
+                        </connections>
+                    </tableView>
                     <navigationItem key="navigationItem" title="Starting Location" id="EPo-xJ-ePN">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Kbp-ge-pjV"/>
-                        <barButtonItem key="rightBarButtonItem" title="+" id="rsq-iZ-8Ht"/>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="rsq-iZ-8Ht">
+                            <connections>
+                                <action selector="addStartingLocation:" destination="rMg-a7-5hY" id="Ip0-R9-56I"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="tpZ-8z-4Ru" kind="show" id="K3p-G2-MvA"/>
-                        <segue destination="aSu-X7-cwF" kind="show" id="wna-ou-lgd"/>
+                        <segue destination="tpZ-8z-4Ru" kind="show" identifier="startToDestination" id="K3p-G2-MvA"/>
+                        <segue destination="aSu-X7-cwF" kind="show" identifier="toAddStarting" id="wna-ou-lgd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7K-Sl-MgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-236" y="134"/>
+            <point key="canvasLocation" x="-236" y="133.5832083958021"/>
         </scene>
         <!--Destination-->
         <scene sceneID="BOi-5g-RPj">
@@ -110,18 +127,18 @@
                         <barButtonItem key="rightBarButtonItem" title="+" id="feJ-1n-dGJ"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="2S1-c0-Z4L"/>
-                        <segue destination="5mY-d9-KVx" kind="show" id="3zO-zN-Qk1"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="destinationToARCamera" id="2S1-c0-Z4L"/>
+                        <segue destination="5mY-d9-KVx" kind="show" identifier="toAddDestination" id="3zO-zN-Qk1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPk-Aq-Ayl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="426" y="134"/>
         </scene>
-        <!--Title-->
+        <!--Add Starting Location-->
         <scene sceneID="WLT-gO-J8X">
             <objects>
-                <viewController id="aSu-X7-cwF" sceneMemberID="viewController">
+                <viewController id="aSu-X7-cwF" customClass="AddStartingLocationVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z6d-J0-Aht">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,15 +161,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5gn-hZ-yUW"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="VPz-Eo-lxz">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="eFV-9d-hwO"/>
+                    <navigationItem key="navigationItem" title="Add Starting Location" id="VPz-Eo-lxz">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="eFV-9d-hwO">
+                            <connections>
+                                <action selector="addStart:" destination="aSu-X7-cwF" id="Pyw-HJ-lnH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="name" destination="pxL-Wb-F38" id="ioF-SS-3nX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rwy-vC-QDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-236" y="888"/>
+            <point key="canvasLocation" x="-237" y="1002"/>
         </scene>
-        <!--Title-->
+        <!--Add Destination-->
         <scene sceneID="iIE-wF-A08">
             <objects>
                 <viewController id="5mY-d9-KVx" sceneMemberID="viewController">
@@ -183,13 +207,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wJj-wB-DYd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="uxL-E4-X8O">
+                    <navigationItem key="navigationItem" title="Add Destination" id="uxL-E4-X8O">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="prf-nq-BoR"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jf-dP-gv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="887"/>
+            <point key="canvasLocation" x="426" y="1020"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

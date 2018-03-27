@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1106EAF32069DF4F00443298 /* StartingLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1106EAF22069DF4F00443298 /* StartingLocationsVC.swift */; };
+		1106EAF52069DF9500443298 /* AddStartingLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1106EAF42069DF9500443298 /* AddStartingLocationVC.swift */; };
 		115079872039C7250034B68B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079862039C7250034B68B /* AppDelegate.swift */; };
 		115079892039C7250034B68B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079882039C7250034B68B /* ViewController.swift */; };
 		1150798C2039C7250034B68B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1150798A2039C7250034B68B /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1106EAF22069DF4F00443298 /* StartingLocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLocationsVC.swift; sourceTree = "<group>"; };
+		1106EAF42069DF9500443298 /* AddStartingLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStartingLocationVC.swift; sourceTree = "<group>"; };
 		115079832039C7250034B68B /* Agumented Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agumented Navigation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		115079862039C7250034B68B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		115079882039C7250034B68B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				115079922039C7250034B68B /* LaunchScreen.storyboard */,
 				115079952039C7250034B68B /* Info.plist */,
 				1150798D2039C7250034B68B /* Agumented_Navigation.xcdatamodeld */,
+				1106EAF22069DF4F00443298 /* StartingLocationsVC.swift */,
+				1106EAF42069DF9500443298 /* AddStartingLocationVC.swift */,
 			);
 			path = "Agumented Navigation";
 			sourceTree = "<group>";
@@ -140,6 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				115079892039C7250034B68B /* ViewController.swift in Sources */,
+				1106EAF32069DF4F00443298 /* StartingLocationsVC.swift in Sources */,
+				1106EAF52069DF9500443298 /* AddStartingLocationVC.swift in Sources */,
 				1150798F2039C7250034B68B /* Agumented_Navigation.xcdatamodeld in Sources */,
 				115079872039C7250034B68B /* AppDelegate.swift in Sources */,
 			);
