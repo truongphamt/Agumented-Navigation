@@ -9,10 +9,16 @@
     </entity>
     <entity name="Route" representedClassName="Route" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="nodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Node" inverseName="route" inverseEntity="Node" syncable="YES"/>
+        <relationship name="nodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Node" inverseName="route" inverseEntity="Node" syncable="YES"/>
+        <relationship name="start" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Start" inverseName="routes" inverseEntity="Start" syncable="YES"/>
+    </entity>
+    <entity name="Start" representedClassName="Start" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="routes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Route" inverseName="start" inverseEntity="Route" syncable="YES"/>
     </entity>
     <elements>
         <element name="Node" positionX="-252" positionY="9" width="128" height="118"/>
-        <element name="Route" positionX="-468" positionY="9" width="128" height="73"/>
+        <element name="Route" positionX="-468" positionY="9" width="128" height="90"/>
+        <element name="Start" positionX="-360" positionY="54" width="128" height="75"/>
     </elements>
 </model>
