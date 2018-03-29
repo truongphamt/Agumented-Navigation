@@ -10,11 +10,12 @@ import UIKit
 import ARKit
 import CoreData
 
-class ViewController: UIViewController {
+class ARSetupVC: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var destination: Destination?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +25,6 @@ class ViewController: UIViewController {
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         self.sceneView.session.run(configuration)
         self.sceneView.autoenablesDefaultLighting = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func addNode(_ sender: Any) {
@@ -45,7 +41,12 @@ class ViewController: UIViewController {
         self.sceneView.scene.rootNode.addChildNode(node)
     }
     
-    @IBAction func deleteNode(_ sender: Any) {
+    @IBAction func removeLastNode(_ sender: Any) {
+        let lastNode = self.sceneView.scene.rootNode.childNodes.last
+        lastNode?.removeFromParentNode()
+    }
+    
+    @IBAction func removeAllNodes(_ sender: Any) {
         self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
             node.removeFromParentNode()
         }
@@ -54,9 +55,6 @@ class ViewController: UIViewController {
     @IBAction func saveRoute(_ sender: Any) {
         let childNodes = self.sceneView.scene.rootNode.childNodes
         
-        let newRoute = Route(context: context)
-        newRoute.name = "Route1"
-        
         var index = 0
         for node in childNodes {
             let newNode = Node(context: context)
@@ -64,7 +62,7 @@ class ViewController: UIViewController {
             newNode.x = node.position.x
             newNode.y = node.position.y
             newNode.z = node.position.z
-            newNode.route = newRoute
+            newNode.route = destination
             index = index + 1
         }
         
@@ -75,13 +73,11 @@ class ViewController: UIViewController {
     @IBAction func loadRoute(_ sender: Any) {
         do {
             // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Route")
-            let routes = try context.fetch(fetchRequest) as! [Route]
-            guard let route = routes.first else { return }
-            guard let childNodes = route.nodes else { return }
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Node")
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Node.route), destination!)
+            let childNodes = try context.fetch(fetchRequest) as! [Node]
             
-            for nodeInSet in childNodes {
-                let node = nodeInSet as! Node
+            for node in childNodes {
                 let newNode = SCNNode()
                 newNode.geometry = SCNSphere(radius: 0.05)
                 newNode.geometry?.firstMaterial?.specular.contents = UIColor.white
@@ -93,20 +89,6 @@ class ViewController: UIViewController {
             
         } catch {
             print("Fetching Failed")
-        }
-    }
-    
-    @IBAction func deleteRoute(_ sender: Any) {
-        do {
-            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Route")
-            let request = NSBatchDeleteRequest(fetchRequest: fetch)
-            _ = try context.execute(request)
-            
-            let nodeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Node")
-            let nodeRequest = NSBatchDeleteRequest(fetchRequest: nodeFetch)
-            _ = try context.execute(nodeRequest)
-        } catch {
-            print("Deleting Failed")
         }
     }
 }

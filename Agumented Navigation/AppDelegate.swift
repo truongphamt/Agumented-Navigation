@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Agumented Navigation
 //
-//  Created by Anh Phung on 2/18/18.
+//  Created by Truong Pham on 2/18/18.
 //  Copyright © 2018 UHCL. All rights reserved.
 //
 

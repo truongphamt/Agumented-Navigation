@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZpR-gk-dOA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14105" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZpR-gk-dOA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -115,16 +115,33 @@
         <!--Destination-->
         <scene sceneID="BOi-5g-RPj">
             <objects>
-                <viewController id="tpZ-8z-4Ru" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iys-xI-pIo">
+                <viewController id="tpZ-8z-4Ru" customClass="DestinationsVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PLX-oG-bfq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Dcf-zK-WUT"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="pMu-gS-qDq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pMu-gS-qDq" id="THw-DV-Flb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tpZ-8z-4Ru" id="Lgc-8S-3sq"/>
+                            <outlet property="delegate" destination="tpZ-8z-4Ru" id="tyz-Nc-2bV"/>
+                        </connections>
+                    </tableView>
                     <navigationItem key="navigationItem" title="Destination" id="9Au-dF-emJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="3mB-yx-qxW"/>
-                        <barButtonItem key="rightBarButtonItem" title="+" id="feJ-1n-dGJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="feJ-1n-dGJ">
+                            <connections>
+                                <action selector="addDestination:" destination="tpZ-8z-4Ru" id="9Xm-qZ-QUS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="destinationToARCamera" id="2S1-c0-Z4L"/>
@@ -179,7 +196,7 @@
         <!--Add Destination-->
         <scene sceneID="iIE-wF-A08">
             <objects>
-                <viewController id="5mY-d9-KVx" sceneMemberID="viewController">
+                <viewController id="5mY-d9-KVx" customClass="AddDestinationVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HZS-1A-zJz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,17 +225,24 @@
                         <viewLayoutGuide key="safeArea" id="wJj-wB-DYd"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Destination" id="uxL-E4-X8O">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="prf-nq-BoR"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="prf-nq-BoR">
+                            <connections>
+                                <action selector="addDestination:" destination="5mY-d9-KVx" id="s7n-h2-tQ1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="name" destination="EIJ-Bp-r6y" id="RZ9-m6-ax8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jf-dP-gv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="426" y="1020"/>
+            <point key="canvasLocation" x="425" y="1002"/>
         </scene>
-        <!--View Controller-->
+        <!--SetupVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ARSetupVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,21 +262,8 @@
                                     <action selector="addNode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ul-pA-cIG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7Vq-IB-fgL">
-                                <rect key="frame" x="203" y="597" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Wyd-7A-syw"/>
-                                    <constraint firstAttribute="height" constant="50" id="eoP-rZ-p4c"/>
-                                </constraints>
-                                <state key="normal" title="Load Route"/>
-                                <connections>
-                                    <action selector="addNode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D3V-Su-Xxa"/>
-                                    <action selector="loadRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tkh-GM-5QH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="h19-QO-Snu">
-                                <rect key="frame" x="145" y="597" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="h19-QO-Snu">
+                                <rect key="frame" x="260" y="548" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Yco-Rh-xH7"/>
@@ -260,12 +271,11 @@
                                 </constraints>
                                 <state key="normal" title="Save Route"/>
                                 <connections>
-                                    <action selector="addNode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sdA-u7-hvg"/>
                                     <action selector="saveRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3H3-RB-FPg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LB2-Fx-aqe">
-                                <rect key="frame" x="78" y="597" width="59" height="50"/>
+                                <rect key="frame" x="139" y="548" width="58" height="50"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5Yt-gJ-Ph7"/>
@@ -273,21 +283,31 @@
                                 </constraints>
                                 <state key="normal" title="Remove All Nodes"/>
                                 <connections>
-                                    <action selector="deleteNode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y1U-Rp-aSN"/>
+                                    <action selector="removeAllNodes:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V2z-vh-wvz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="t8Z-dy-zMk">
-                                <rect key="frame" x="261" y="597" width="50" height="50"/>
+                                <rect key="frame" x="76" y="548" width="55" height="50"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="gY3-6D-eWw"/>
                                     <constraint firstAttribute="height" constant="50" id="zFL-gh-fpI"/>
                                 </constraints>
-                                <state key="normal" title="Delete Route"/>
+                                <state key="normal" title="Remove Node"/>
                                 <connections>
-                                    <action selector="addNode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HZf-G7-JHJ"/>
-                                    <action selector="deleteRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="22j-bV-e9v"/>
-                                    <action selector="loadRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JxH-6n-okQ"/>
+                                    <action selector="removeLastNode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XIW-mC-epx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7Vq-IB-fgL">
+                                <rect key="frame" x="205" y="548" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Wyd-7A-syw"/>
+                                    <constraint firstAttribute="height" constant="50" id="eoP-rZ-p4c"/>
+                                </constraints>
+                                <state key="normal" title="Load Route"/>
+                                <connections>
+                                    <action selector="loadRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tkh-GM-5QH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -295,15 +315,15 @@
                         <constraints>
                             <constraint firstItem="amC-eB-dPc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="698-mB-Znq"/>
                             <constraint firstItem="amC-eB-dPc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8YG-fM-xPU"/>
-                            <constraint firstItem="7Vq-IB-fgL" firstAttribute="leading" secondItem="h19-QO-Snu" secondAttribute="trailing" constant="8" symbolic="YES" id="ChR-bJ-9UX"/>
                             <constraint firstItem="t8Z-dy-zMk" firstAttribute="top" secondItem="7Vq-IB-fgL" secondAttribute="top" id="DUA-wR-M4U"/>
-                            <constraint firstItem="h19-QO-Snu" firstAttribute="leading" secondItem="LB2-Fx-aqe" secondAttribute="trailing" constant="8" symbolic="YES" id="KUA-3d-Hpx"/>
                             <constraint firstItem="amC-eB-dPc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MdD-RE-kA3"/>
+                            <constraint firstItem="LB2-Fx-aqe" firstAttribute="leading" secondItem="t8Z-dy-zMk" secondAttribute="trailing" constant="10" id="Pd1-SD-uwb"/>
                             <constraint firstAttribute="trailing" secondItem="amC-eB-dPc" secondAttribute="trailing" id="RxE-eC-acD"/>
+                            <constraint firstItem="7Vq-IB-fgL" firstAttribute="leading" secondItem="LB2-Fx-aqe" secondAttribute="trailing" constant="10" id="XkC-Kq-wSb"/>
+                            <constraint firstItem="t8Z-dy-zMk" firstAttribute="leading" secondItem="SAQ-fY-4lY" secondAttribute="trailing" constant="10" id="Xu5-n9-EOv"/>
+                            <constraint firstItem="h19-QO-Snu" firstAttribute="leading" secondItem="7Vq-IB-fgL" secondAttribute="trailing" constant="10" id="ddE-4G-viN"/>
                             <constraint firstItem="SAQ-fY-4lY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kP3-2k-byn"/>
-                            <constraint firstItem="t8Z-dy-zMk" firstAttribute="leading" secondItem="7Vq-IB-fgL" secondAttribute="trailing" constant="8" symbolic="YES" id="lIF-sM-bHF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SAQ-fY-4lY" secondAttribute="bottom" constant="20" id="nJH-bZ-GP7"/>
-                            <constraint firstItem="LB2-Fx-aqe" firstAttribute="leading" secondItem="SAQ-fY-4lY" secondAttribute="trailing" constant="8" symbolic="YES" id="slc-yq-adA"/>
                             <constraint firstItem="LB2-Fx-aqe" firstAttribute="top" secondItem="SAQ-fY-4lY" secondAttribute="top" id="udK-Ab-zYo"/>
                             <constraint firstItem="LB2-Fx-aqe" firstAttribute="top" secondItem="h19-QO-Snu" secondAttribute="top" id="uek-j2-OTx"/>
                             <constraint firstItem="LB2-Fx-aqe" firstAttribute="top" secondItem="7Vq-IB-fgL" secondAttribute="top" id="xwf-TS-SDb"/>
@@ -316,13 +336,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="134"/>
+            <point key="canvasLocation" x="1092" y="133.5832083958021"/>
         </scene>
-        <!--Item-->
+        <!--Config-->
         <scene sceneID="TTf-BQ-T4R">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UY0-ug-Oqy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cJq-6V-UV4"/>
+                    <tabBarItem key="tabBarItem" title="Config" id="cJq-6V-UV4"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZFI-oa-9pX">
@@ -338,11 +358,11 @@
             </objects>
             <point key="canvasLocation" x="-994" y="134"/>
         </scene>
-        <!--Item-->
+        <!--Release-->
         <scene sceneID="bNP-AV-bg0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eBr-Ua-Qtz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZdH-IL-8Lx"/>
+                    <tabBarItem key="tabBarItem" title="Release" id="ZdH-IL-8Lx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NrD-3i-7MY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -363,6 +383,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZpR-gk-dOA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0yR-dd-5B8">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -383,6 +404,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="u93-hj-pfP"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gki-oE-0Mf" userLabel="First Responder" sceneMemberID="firstResponder"/>

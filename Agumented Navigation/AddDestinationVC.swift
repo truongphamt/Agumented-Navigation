@@ -1,17 +1,19 @@
 //
-//  AddStartingLocationVC.swift
+//  AddDestinationVC.swift
 //  Agumented Navigation
 //
-//  Created by Truong Pham on 3/26/18.
+//  Created by Truong Pham on 3/27/18.
 //  Copyright © 2018 UHCL. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class AddStartingLocationVC: UIViewController {
+class AddDestinationVC: UIViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var startingLocation: Start?
+    //var destination: Destination?
     
     @IBOutlet weak var name: UITextField!
     
@@ -19,10 +21,12 @@ class AddStartingLocationVC: UIViewController {
         self.name.text = ""
     }
     
-    @IBAction func addStart(_ sender: Any) {
+    @IBAction func addDestination(_ sender: Any) {
         
-        let newStart = Start(context: context)
-        newStart.name = self.name.text
+        let newDestination = Destination(context: context)
+        
+        newDestination.name = self.name.text
+        newDestination.start = startingLocation
         
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
