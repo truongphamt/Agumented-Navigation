@@ -23,6 +23,7 @@ class AddStartingLocationVC: UIViewController {
         
         let newStart = Start(context: context)
         newStart.name = self.name.text
+        //newStart.beaconID = self.beacon.text
         
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()

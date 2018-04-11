@@ -45,5 +45,7 @@
 	<string>Allow camera for AR Navigation</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow to use proximity beacons</string>
 </dict>
 </plist>

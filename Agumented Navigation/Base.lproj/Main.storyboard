@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14105" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZpR-gk-dOA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xfJ-W7-07C">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--test-->
         <scene sceneID="r6l-4T-XkI">
             <objects>
-                <viewController id="Zev-kr-yMT" sceneMemberID="viewController">
+                <viewController id="Zev-kr-yMT" customClass="HomeScreenVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rVi-eh-cmb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,6 +377,38 @@
             </objects>
             <point key="canvasLocation" x="-994" y="-654"/>
         </scene>
+        <!--Get StartedVC-->
+        <scene sceneID="e0V-iE-DwP">
+            <objects>
+                <viewController id="xfJ-W7-07C" customClass="GetStartedVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YXl-9r-POh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRJ-gZ-0av">
+                                <rect key="frame" x="128" y="552" width="119" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Get Started"/>
+                                <connections>
+                                    <action selector="getStartedPressed:" destination="xfJ-W7-07C" eventType="touchUpInside" id="mZ3-R1-Zfh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DRJ-gZ-0av" firstAttribute="leading" secondItem="LBu-i2-7NI" secondAttribute="leading" constant="128" id="WcD-bz-4ML"/>
+                            <constraint firstItem="LBu-i2-7NI" firstAttribute="bottom" secondItem="DRJ-gZ-0av" secondAttribute="bottom" constant="74" id="ZgC-Sa-o5L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LBu-i2-7NI"/>
+                    </view>
+                    <connections>
+                        <segue destination="ZpR-gk-dOA" kind="show" identifier="getStartedToHomeScreen" id="l4I-LC-B3h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s2t-BY-eu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2705" y="-654"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gXu-hz-g3L">
             <objects>
@@ -413,7 +445,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="K3p-G2-MvA"/>
-        <segue reference="0mz-zw-0F6"/>
+        <segue reference="dTv-H3-yaf"/>
+        <segue reference="JKq-SD-uU8"/>
     </inferredMetricsTieBreakers>
 </document>

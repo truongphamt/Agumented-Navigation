@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Destination" representedClassName="Destination" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="nodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Node" inverseName="route" inverseEntity="Node" syncable="YES"/>
@@ -13,12 +13,13 @@
         <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Destination" inverseName="nodes" inverseEntity="Destination" syncable="YES"/>
     </entity>
     <entity name="Start" representedClassName="Start" syncable="YES" codeGenerationType="class">
+        <attribute name="beaconID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="routes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Destination" inverseName="start" inverseEntity="Destination" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Node" positionX="-252" positionY="9" width="128" height="118"/>
         <element name="Destination" positionX="-468" positionY="9" width="128" height="90"/>
-        <element name="Start" positionX="-360" positionY="54" width="128" height="75"/>
+        <element name="Node" positionX="-252" positionY="9" width="128" height="118"/>
+        <element name="Start" positionX="-360" positionY="54" width="128" height="90"/>
     </elements>
 </model>
