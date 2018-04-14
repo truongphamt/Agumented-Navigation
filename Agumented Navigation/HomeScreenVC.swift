@@ -13,6 +13,10 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
     let region = CLBeaconRegion(proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "DeltaBeacons")
+    var startingLocation: Start?
+    var destinationLocation: Destination?
+    @IBOutlet weak var fromTextView: UITextField!
+    @IBOutlet weak var toTextView: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,15 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
         }
         locationManager.startRangingBeacons(in: region)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let start = startingLocation {
+            fromTextView.text = start.name
+        }
+        if let dest = destinationLocation {
+            toTextView.text = dest.name
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,7 +46,14 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         print(beacons.count)
     }
-
+    
+    @IBAction func fromTouchUp(_ sender: Any) {
+        //performSegue(withIdentifier: "toStartSearch", sender: self)
+    }
+    
+    @IBAction func fromTouchDown(_ sender: Any) {
+        performSegue(withIdentifier: "toStartSearch", sender: self)
+    }
     /*
     // MARK: - Navigation
 

@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--test-->
+        <!--Home ScreenVC-->
         <scene sceneID="r6l-4T-XkI">
             <objects>
                 <viewController id="Zev-kr-yMT" customClass="HomeScreenVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,6 +46,10 @@
                                         <color key="textColor" name="inputText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="fromTouchDown:" destination="Zev-kr-yMT" eventType="touchDown" id="uhs-FQ-Fo8"/>
+                                            <action selector="fromTouchUp:" destination="Zev-kr-yMT" eventType="touchUpInside" id="Y0j-3i-ZjI"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" name="standardBlue"/>
@@ -69,11 +73,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iks-vH-OOf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="test" id="sXr-2r-hZ4"/>
+                    <navigationItem key="navigationItem" id="sXr-2r-hZ4">
+                        <barButtonItem key="backBarButtonItem" title="test" id="l2k-GK-iC0"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="rMg-a7-5hY" kind="show" id="JKq-SD-uU8"/>
-                        <segue destination="tpZ-8z-4Ru" kind="show" id="dTv-H3-yaf"/>
-                        <segue destination="5Ad-0d-ift" kind="show" id="WA1-Ig-yg3"/>
+                        <outlet property="fromTextView" destination="Du8-Kn-sew" id="8pn-fO-mva"/>
+                        <outlet property="toTextView" destination="p7l-da-3kw" id="wGD-Nf-vLr"/>
+                        <segue destination="5Ad-0d-ift" kind="show" identifier="toStartSearch" id="WA1-Ig-yg3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3y-ey-pf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,20 +445,72 @@
             </objects>
             <point key="canvasLocation" x="-1852" y="-654"/>
         </scene>
-        <!--View Controller-->
+        <!--From-->
         <scene sceneID="LOs-hu-zeK">
             <objects>
-                <viewController id="5Ad-0d-ift" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Boe-ie-IXq">
+                <viewController id="5Ad-0d-ift" customClass="FromSelectionVC" customModule="Agumented_Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Mp-0k-0Vv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KvZ-sJ-rSH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PHc-zG-6U3">
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="LSv-Mi-Cxh">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LSv-Mi-Cxh" id="CPo-ef-Hg2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Ad-0d-ift" id="dc2-Bo-Emo"/>
+                                    <outlet property="delegate" destination="5Ad-0d-ift" id="NxB-2d-9SY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="u93-hj-pfP"/>
+                        <constraints>
+                            <constraint firstItem="KvZ-sJ-rSH" firstAttribute="trailing" secondItem="bLq-F2-fsc" secondAttribute="trailing" id="07S-EG-9LB"/>
+                            <constraint firstItem="PHc-zG-6U3" firstAttribute="bottom" secondItem="bLq-F2-fsc" secondAttribute="bottom" id="5zA-kB-dZC"/>
+                            <constraint firstItem="PHc-zG-6U3" firstAttribute="top" secondItem="KvZ-sJ-rSH" secondAttribute="bottom" id="LBG-rq-x3N"/>
+                            <constraint firstItem="KvZ-sJ-rSH" firstAttribute="leading" secondItem="bLq-F2-fsc" secondAttribute="leading" id="RMj-5q-0Wc"/>
+                            <constraint firstItem="KvZ-sJ-rSH" firstAttribute="top" secondItem="bLq-F2-fsc" secondAttribute="top" id="U1e-rv-Z6l"/>
+                            <constraint firstItem="PHc-zG-6U3" firstAttribute="trailing" secondItem="bLq-F2-fsc" secondAttribute="trailing" id="Z8S-Lt-abf"/>
+                            <constraint firstItem="PHc-zG-6U3" firstAttribute="leading" secondItem="bLq-F2-fsc" secondAttribute="leading" id="tVj-9Q-Skf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bLq-F2-fsc"/>
                     </view>
+                    <navigationItem key="navigationItem" title="From" id="KGt-nU-t30">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="38K-Pz-xfx"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="KvZ-sJ-rSH" id="Vlv-bB-Ugj"/>
+                        <outlet property="searchDisplayController" destination="WfN-Cc-hbp" id="oRL-5T-ZnL"/>
+                        <outlet property="tableView" destination="PHc-zG-6U3" id="7i4-YC-3oS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gki-oE-0Mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="WfN-Cc-hbp">
+                    <connections>
+                        <outlet property="delegate" destination="5Ad-0d-ift" id="0mO-bB-PAi"/>
+                        <outlet property="searchContentsController" destination="5Ad-0d-ift" id="PQU-ez-Nad"/>
+                        <outlet property="searchResultsDataSource" destination="5Ad-0d-ift" id="8oY-BO-lXz"/>
+                        <outlet property="searchResultsDelegate" destination="5Ad-0d-ift" id="zTk-tC-kAf"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="871" y="-654"/>
+            <point key="canvasLocation" x="1041" y="-895"/>
         </scene>
     </scenes>
     <resources>
@@ -470,8 +528,4 @@
             <color red="0.33300000429153442" green="0.5690000057220459" blue="0.76899999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dTv-H3-yaf"/>
-        <segue reference="JKq-SD-uU8"/>
-    </inferredMetricsTieBreakers>
 </document>
