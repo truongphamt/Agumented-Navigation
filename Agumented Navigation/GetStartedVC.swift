@@ -2,7 +2,7 @@
 //  GetStartedVC.swift
 //  Agumented Navigation
 //
-//  Created by Anh Phung on 4/11/18.
+//  Created by Truong Pham on 4/11/18.
 //  Copyright © 2018 UHCL. All rights reserved.
 //
 

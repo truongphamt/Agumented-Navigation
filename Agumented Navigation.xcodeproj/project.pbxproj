@@ -12,6 +12,7 @@
 		110DC5D8207ECEEB003B4638 /* GetStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DC5D7207ECEEB003B4638 /* GetStartedVC.swift */; };
 		110DC5DA208271C5003B4638 /* FromSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DC5D9208271C5003B4638 /* FromSelectionVC.swift */; };
 		110DC5DC2082A90E003B4638 /* ToSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DC5DB2082A90E003B4638 /* ToSelectionVC.swift */; };
+		110DC5DE2082AF30003B4638 /* ARNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DC5DD2082AF30003B4638 /* ARNavigationVC.swift */; };
 		11502C3B206B2EDC0005266D /* AddDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11502C3A206B2EDC0005266D /* AddDestinationVC.swift */; };
 		11502C3D206B2F030005266D /* DestinationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11502C3C206B2F030005266D /* DestinationsVC.swift */; };
 		115079872039C7250034B68B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079862039C7250034B68B /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 		110DC5D7207ECEEB003B4638 /* GetStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedVC.swift; sourceTree = "<group>"; };
 		110DC5D9208271C5003B4638 /* FromSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromSelectionVC.swift; sourceTree = "<group>"; };
 		110DC5DB2082A90E003B4638 /* ToSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSelectionVC.swift; sourceTree = "<group>"; };
+		110DC5DD2082AF30003B4638 /* ARNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARNavigationVC.swift; sourceTree = "<group>"; };
 		11502C3A206B2EDC0005266D /* AddDestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDestinationVC.swift; sourceTree = "<group>"; };
 		11502C3C206B2F030005266D /* DestinationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsVC.swift; sourceTree = "<group>"; };
 		115079832039C7250034B68B /* Agumented Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agumented Navigation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,9 +76,11 @@
 			children = (
 				115079862039C7250034B68B /* AppDelegate.swift */,
 				1150798A2039C7250034B68B /* Main.storyboard */,
+				110DC5D7207ECEEB003B4638 /* GetStartedVC.swift */,
 				1192E46C207C22BA00D16971 /* HomeScreenVC.swift */,
 				110DC5D9208271C5003B4638 /* FromSelectionVC.swift */,
 				110DC5DB2082A90E003B4638 /* ToSelectionVC.swift */,
+				110DC5DD2082AF30003B4638 /* ARNavigationVC.swift */,
 				1106EAF22069DF4F00443298 /* StartingLocationsVC.swift */,
 				11502C3C206B2F030005266D /* DestinationsVC.swift */,
 				1106EAF42069DF9500443298 /* AddStartingLocationVC.swift */,
@@ -86,7 +90,6 @@
 				115079922039C7250034B68B /* LaunchScreen.storyboard */,
 				115079952039C7250034B68B /* Info.plist */,
 				1150798D2039C7250034B68B /* Agumented_Navigation.xcdatamodeld */,
-				110DC5D7207ECEEB003B4638 /* GetStartedVC.swift */,
 			);
 			path = "Agumented Navigation";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				110DC5DA208271C5003B4638 /* FromSelectionVC.swift in Sources */,
 				1106EAF32069DF4F00443298 /* StartingLocationsVC.swift in Sources */,
 				1106EAF52069DF9500443298 /* AddStartingLocationVC.swift in Sources */,
+				110DC5DE2082AF30003B4638 /* ARNavigationVC.swift in Sources */,
 				1150798F2039C7250034B68B /* Agumented_Navigation.xcdatamodeld in Sources */,
 				115079872039C7250034B68B /* AppDelegate.swift in Sources */,
 				11502C3B206B2EDC0005266D /* AddDestinationVC.swift in Sources */,

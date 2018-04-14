@@ -53,14 +53,19 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     @IBAction func toTouchDown(_ sender: Any) {
         performSegue(withIdentifier: "toDestinationSearch", sender: self)
     }
-    /*
+    
+    @IBAction func beginNavigationPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toARCamera", sender: self)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let viewController = segue.destination as? ARNavigationVC {
+            viewController.destination = destinationLocation
+        }
     }
-    */
-
 }
