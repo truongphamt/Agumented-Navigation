@@ -14,16 +14,18 @@ class AddStartingLocationVC: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var beacon: UITextField!
     
     override func viewDidAppear(_ animated: Bool) {
         self.name.text = ""
+        self.beacon.text = ""
     }
     
     @IBAction func addStart(_ sender: Any) {
         
         let newStart = Start(context: context)
         newStart.name = self.name.text
-        //newStart.beaconID = self.beacon.text
+        newStart.beaconID = self.beacon.text
         
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()

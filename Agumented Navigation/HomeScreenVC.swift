@@ -17,6 +17,8 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     var destinationLocation: Destination?
     @IBOutlet weak var fromTextView: UITextField!
     @IBOutlet weak var toTextView: UITextField!
+    @IBOutlet weak var beaconLabel: UILabel!
+    @IBOutlet weak var beginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,26 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        print(beacons.count)
+        
+        beaconLabel.text = ""
+        beginButton.backgroundColor = UIColor(ciColor: CIColor.gray)
+        
+        guard let start = startingLocation else { return }
+        let startMinor = start.beaconID!
+        let knownBeacons = beacons.filter{ $0.proximity != CLProximity.unknown && String(Int(truncating: $0.minor)) == startMinor }
+        if (knownBeacons.count < 1) { return }
+        
+        let beacon = knownBeacons[0] as CLBeacon
+        let distance = beacon.accuracy
+        
+        if (distance < 1.0) {
+            beaconLabel.text = "Let's do this!"
+            beginButton.backgroundColor = UIColor(ciColor: CIColor.green)
+        } else if (distance < 3) {
+            beaconLabel.text = "Getting warmer"
+        } else {
+            beaconLabel.text = "Please get closer to the \(start.name!)"
+        }
     }
     
     @IBAction func fromTouchDown(_ sender: Any) {

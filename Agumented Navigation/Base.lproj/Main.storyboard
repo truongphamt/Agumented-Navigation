@@ -66,6 +66,12 @@
                                 <rect key="frame" x="42" y="219" width="291" height="295"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWe-70-gb6">
+                                <rect key="frame" x="42" y="533.5" width="52.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="standardBlue"/>
                         <constraints>
@@ -75,11 +81,15 @@
                             <constraint firstItem="uMA-Vo-ZGF" firstAttribute="leading" secondItem="iks-vH-OOf" secondAttribute="leading" id="TVh-1C-9oG"/>
                             <constraint firstItem="sB6-0c-fQ8" firstAttribute="bottom" secondItem="iks-vH-OOf" secondAttribute="bottom" id="XOG-vo-YTM"/>
                             <constraint firstItem="sB6-0c-fQ8" firstAttribute="leading" secondItem="iks-vH-OOf" secondAttribute="leading" id="hjF-6X-wA0"/>
+                            <constraint firstItem="sB6-0c-fQ8" firstAttribute="top" secondItem="vWe-70-gb6" secondAttribute="bottom" constant="8" id="rEN-kP-UJ7"/>
+                            <constraint firstItem="vWe-70-gb6" firstAttribute="leading" secondItem="iks-vH-OOf" secondAttribute="leading" constant="42" id="wAl-WP-5nk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iks-vH-OOf"/>
                     </view>
                     <navigationItem key="navigationItem" id="sXr-2r-hZ4"/>
                     <connections>
+                        <outlet property="beaconLabel" destination="vWe-70-gb6" id="ygw-Bf-7aV"/>
+                        <outlet property="beginButton" destination="sB6-0c-fQ8" id="fkE-7T-iGT"/>
                         <outlet property="fromTextView" destination="Du8-Kn-sew" id="8pn-fO-mva"/>
                         <outlet property="toTextView" destination="p7l-da-3kw" id="wGD-Nf-vLr"/>
                         <segue destination="5Ad-0d-ift" kind="show" identifier="toStartSearch" id="WA1-Ig-yg3"/>
@@ -179,22 +189,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVu-Dm-cq0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVu-Dm-cq0">
                                 <rect key="frame" x="16" y="109" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pxL-Wb-F38">
-                                <rect key="frame" x="69" y="104" width="290" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pxL-Wb-F38">
+                                <rect key="frame" x="91" y="104" width="268" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="H5V-aU-3Qf"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boL-xz-b5d">
+                                <rect key="frame" x="16" y="173" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bA-co-Kab">
+                                <rect key="frame" x="91" y="168" width="268" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="nOq-Kp-FJy"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2bA-co-Kab" firstAttribute="leading" secondItem="boL-xz-b5d" secondAttribute="trailing" constant="17" id="Buh-8h-QZK"/>
+                            <constraint firstItem="boL-xz-b5d" firstAttribute="top" secondItem="HVu-Dm-cq0" secondAttribute="bottom" constant="43" id="Hvf-YA-OS3"/>
+                            <constraint firstItem="2bA-co-Kab" firstAttribute="top" secondItem="pxL-Wb-F38" secondAttribute="bottom" constant="34" id="Rfw-A4-KKY"/>
+                            <constraint firstItem="pxL-Wb-F38" firstAttribute="top" secondItem="5gn-hZ-yUW" secondAttribute="top" constant="40" id="doz-g2-hYD"/>
+                            <constraint firstItem="pxL-Wb-F38" firstAttribute="leading" secondItem="HVu-Dm-cq0" secondAttribute="trailing" constant="30" id="pGj-2S-EDo"/>
+                            <constraint firstItem="HVu-Dm-cq0" firstAttribute="top" secondItem="5gn-hZ-yUW" secondAttribute="top" constant="45" id="qlI-ZL-146"/>
+                            <constraint firstItem="boL-xz-b5d" firstAttribute="leading" secondItem="5gn-hZ-yUW" secondAttribute="leading" constant="16" id="xEJ-qx-zm5"/>
+                            <constraint firstItem="HVu-Dm-cq0" firstAttribute="leading" secondItem="5gn-hZ-yUW" secondAttribute="leading" constant="16" id="xM4-5Q-Q4o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5gn-hZ-yUW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Starting Location" id="VPz-Eo-lxz">
@@ -205,12 +241,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="beacon" destination="2bA-co-Kab" id="184-eY-JWp"/>
                         <outlet property="name" destination="pxL-Wb-F38" id="ioF-SS-3nX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rwy-vC-QDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-237" y="1002"/>
+            <point key="canvasLocation" x="-237.59999999999999" y="1001.649175412294"/>
         </scene>
         <!--Add Destination-->
         <scene sceneID="iIE-wF-A08">
