@@ -47,12 +47,11 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
         print(beacons.count)
     }
     
-    @IBAction func fromTouchUp(_ sender: Any) {
-        //performSegue(withIdentifier: "toStartSearch", sender: self)
-    }
-    
     @IBAction func fromTouchDown(_ sender: Any) {
         performSegue(withIdentifier: "toStartSearch", sender: self)
+    }
+    @IBAction func toTouchDown(_ sender: Any) {
+        performSegue(withIdentifier: "toDestinationSearch", sender: self)
     }
     /*
     // MARK: - Navigation

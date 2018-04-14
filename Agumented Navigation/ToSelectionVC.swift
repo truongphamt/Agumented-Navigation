@@ -1,5 +1,5 @@
 //
-//  FromSelectionVC.swift
+//  ToSelectionVC.swift
 //  Agumented Navigation
 //
 //  Created by Truong Pham on 4/14/18.
@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class FromSelectionVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ToSelectionVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var startingLocations: [Start] = []
-    var filteredLocations: [Start] = []
+    var destinationLocations: [Destination] = []
+    var filteredLocations: [Destination] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class FromSelectionVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         searchBar.autocapitalizationType = .none
         searchBar.delegate = self
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         getData()
     }
@@ -56,7 +56,7 @@ class FromSelectionVC: UIViewController, UITableViewDataSource, UITableViewDeleg
             if let navController = self.navigationController {
                 navController.popViewController(animated: true)
                 if let homeVC = navController.viewControllers[0] as? HomeScreenVC {
-                    homeVC.startingLocation = filteredLocations[(self.tableView.indexPathForSelectedRow?.row)!]
+                    homeVC.destinationLocation = filteredLocations[(self.tableView.indexPathForSelectedRow?.row)!]
                 }
             }
         }
@@ -65,7 +65,7 @@ class FromSelectionVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     func getData() {
         do {
             // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Start")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Destination")
             
             // Add Sort Descriptor
             let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -75,8 +75,8 @@ class FromSelectionVC: UIViewController, UITableViewDataSource, UITableViewDeleg
             //let predicate = NSPredicate(format: "item CONTAINS %@", "Chicken")
             //fetchRequest.predicate = predicate
             
-            startingLocations = try context.fetch(fetchRequest) as! [Start]
-            filteredLocations = startingLocations
+            destinationLocations = try context.fetch(fetchRequest) as! [Destination]
+            filteredLocations = destinationLocations
         } catch {
             print("Fetching Failed")
         }
@@ -85,12 +85,12 @@ class FromSelectionVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchText = searchBar.text, !searchText.isEmpty {
-            filteredLocations = startingLocations.filter { loc in
+            filteredLocations = destinationLocations.filter { loc in
                 return (loc.name?.lowercased().contains(searchText.lowercased()))!
             }
             
         } else {
-            filteredLocations = startingLocations
+            filteredLocations = destinationLocations
         }
         tableView.reloadData()
     }
