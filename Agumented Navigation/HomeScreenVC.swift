@@ -19,6 +19,7 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var toTextView: UITextField!
     @IBOutlet weak var beaconLabel: UILabel!
     @IBOutlet weak var beginButton: UIButton!
+    var formColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
         locationManager.startRangingBeacons(in: region)
+        formColor = beginButton.backgroundColor
+        beaconLabel.adjustsFontSizeToFitWidth = true
+        //tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,19 +43,14 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
             toTextView.text = dest.name
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         
         beaconLabel.text = ""
-        beginButton.backgroundColor = UIColor(ciColor: CIColor.gray)
+        beginButton.backgroundColor = formColor
         
         guard let start = startingLocation else { return }
-        let startMinor = start.beaconID!
+        let startMinor = start.beaconID
         let knownBeacons = beacons.filter{ $0.proximity != CLProximity.unknown && String(Int(truncating: $0.minor)) == startMinor }
         if (knownBeacons.count < 1) { return }
         
@@ -60,11 +59,13 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
         
         if (distance < 1.0) {
             beaconLabel.text = "Let's do this!"
-            beginButton.backgroundColor = UIColor(ciColor: CIColor.green)
+            beginButton.backgroundColor = UIColor.green
         } else if (distance < 3) {
             beaconLabel.text = "Getting warmer"
+            beginButton.backgroundColor = UIColor.gray
         } else {
             beaconLabel.text = "Please get closer to the \(start.name!)"
+            beginButton.backgroundColor = UIColor.gray
         }
     }
     

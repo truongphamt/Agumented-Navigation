@@ -66,8 +66,8 @@
                                 <rect key="frame" x="42" y="219" width="291" height="295"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWe-70-gb6">
-                                <rect key="frame" x="42" y="533.5" width="52.5" height="26.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWe-70-gb6">
+                                <rect key="frame" x="42" y="560" width="313" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -79,6 +79,7 @@
                             <constraint firstItem="uMA-Vo-ZGF" firstAttribute="trailing" secondItem="iks-vH-OOf" secondAttribute="trailing" id="BO6-Wj-LXa"/>
                             <constraint firstItem="sB6-0c-fQ8" firstAttribute="trailing" secondItem="iks-vH-OOf" secondAttribute="trailing" id="F8Z-Ta-uHX"/>
                             <constraint firstItem="uMA-Vo-ZGF" firstAttribute="leading" secondItem="iks-vH-OOf" secondAttribute="leading" id="TVh-1C-9oG"/>
+                            <constraint firstAttribute="trailing" secondItem="vWe-70-gb6" secondAttribute="trailing" constant="20" id="Ti1-Hi-2nI"/>
                             <constraint firstItem="sB6-0c-fQ8" firstAttribute="bottom" secondItem="iks-vH-OOf" secondAttribute="bottom" id="XOG-vo-YTM"/>
                             <constraint firstItem="sB6-0c-fQ8" firstAttribute="leading" secondItem="iks-vH-OOf" secondAttribute="leading" id="hjF-6X-wA0"/>
                             <constraint firstItem="sB6-0c-fQ8" firstAttribute="top" secondItem="vWe-70-gb6" secondAttribute="bottom" constant="8" id="rEN-kP-UJ7"/>
